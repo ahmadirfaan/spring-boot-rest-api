@@ -5,6 +5,7 @@ import com.irfaan.danspro.models.UserLoginRequest;
 import com.irfaan.danspro.service.JobsDetailService;
 import com.irfaan.danspro.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +30,8 @@ public class WebController {
     @PostMapping(value = "/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody @Valid UserLoginRequest request) {
         Map<String, String> data = loginService.userLogin(request);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(data);
+        data.put("msg", "success login");
+        return ResponseEntity.status(HttpStatus.OK).body(data);
     }
 
     @GetMapping(value = "/jobs")

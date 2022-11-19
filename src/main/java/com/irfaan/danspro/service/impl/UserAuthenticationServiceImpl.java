@@ -24,7 +24,7 @@ public class UserAuthenticationServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users users = userService.verifyUsername(username);
-        if (users.getUsername().equals(username)) {
+        if (users != null && users.getUsername().equals(username)) {
             return new User(users.getUsername(), users.getPassword(), new ArrayList<>());
         } else {
             throw new UsernameNotFoundException("User not found with username: " + username);

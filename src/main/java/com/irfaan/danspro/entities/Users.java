@@ -9,17 +9,15 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+
+
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
 public class Users {
 
     @Id
-    @GenericGenerator(name = "id_user", strategy = "uuid")
-    @GeneratedValue(generator = "id_user", strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "id", strategy = "uuid")
+    @GeneratedValue(generator = "id", strategy = GenerationType.AUTO)
     private String id;
 
     @Column(unique = true)
@@ -28,9 +26,10 @@ public class Users {
     @JsonIgnore
     private String password;
 
-
+    @Column(name = "created_date")
     private LocalDateTime createdDate;
 
+    @Column(name = "updated_date")
     private LocalDateTime updatedDate;
 
 
@@ -45,17 +44,54 @@ public class Users {
         this.updatedDate = LocalDateTime.now();
     }
 
+    public String getId() {
+        return id;
+    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Users users = (Users) o;
-        return id != null && Objects.equals(id, users.id);
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDateTime updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    public String toString() {
+        return "Users{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", createdDate=" + createdDate +
+                ", updatedDate=" + updatedDate +
+                '}';
     }
 }

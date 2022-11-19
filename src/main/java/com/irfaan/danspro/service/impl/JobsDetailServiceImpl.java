@@ -14,7 +14,10 @@ public class JobsDetailServiceImpl implements JobsDetailService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    private final String URL_JOB_ALL = "";
+    private final String URL_JOB_ALL = "http://dev3.dansmultipro.co.id/api/recruitment/positions.json";
+
+    private final String URL_JOB_DETAIL = "http://dev3.dansmultipro.co.id/api/recruitment/positions";
+
 
     @Override
     public List<JobResponse> getAllJob() {
@@ -24,7 +27,8 @@ public class JobsDetailServiceImpl implements JobsDetailService {
 
     @Override
     public JobResponse getJobDetails(String id) {
-        ResponseEntity<JobResponse> exchange = restTemplate.getForEntity(String.format("%s/%s", URL_JOB_ALL, id), JobResponse.class);
+        String url = String.format("%s/%s", URL_JOB_DETAIL, id);
+        ResponseEntity<JobResponse> exchange = restTemplate.getForEntity(url, JobResponse.class);
         return exchange.getBody();
     }
 }

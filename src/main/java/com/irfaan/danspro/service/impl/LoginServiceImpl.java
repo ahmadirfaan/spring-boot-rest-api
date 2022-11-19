@@ -38,6 +38,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Map<String, String> userLogin(UserLoginRequest request) {
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
@@ -45,6 +46,7 @@ public class LoginServiceImpl implements LoginService {
 
         //generate user details
         UserDetails userDetails = usersDetailService.loadUserByUsername(request.getUsername());
+
 
         //generate access token and refresh token
         String accessToken = jwtTokenUtil.generateToken(userDetails);

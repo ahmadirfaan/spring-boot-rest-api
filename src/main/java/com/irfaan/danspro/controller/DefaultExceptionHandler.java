@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -48,6 +49,8 @@ public class DefaultExceptionHandler extends ResponseEntityExceptionHandler {
             message = "Client bermasalah";
         } else if(value == 500) {
             message = "Internal Server Error";
+        } else if(value == 403) {
+            message = "Anda tidak terverifikasi";
         }
         else {
             message = "Server error";
@@ -141,6 +144,12 @@ public class DefaultExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleInternalAuthenticationServiceException(InternalAuthenticationServiceException e) {
         logger.error("InternalAuthenticationServiceException : ", e);
         return handleException(HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException e) {
+        logger.error("UsernameNotFoundException : ", e);
+        return handleException(HttpStatus.FORBIDDEN);
     }
 
     @Override
