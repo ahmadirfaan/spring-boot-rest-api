@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "9dbe0e47-d168-49e5-8929-e2703e52871b",
+		"name": "Danspro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13053028"
+	},
+	"item": [
+		{
+			"name": "Path Not Found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/testing",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"testing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Jobs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1hZGlyZmFhbiIsImV4cCI6MTY3NDgyNjU3OSwiaWF0IjoxNjY4ODI2NTc5fQ.hkRoCY1UP8LqxByGM-6yaOlJw4geuv8CWy-Fw2Q9dXnDpsyDH2b_I2zTy8Ou65Pu96R0oxzel1dZ-9l4y1a6TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/jobs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Jobs Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1hZGlyZmFhbiIsImV4cCI6MTY3NDgyNjU3OSwiaWF0IjoxNjY4ODI2NTc5fQ.hkRoCY1UP8LqxByGM-6yaOlJw4geuv8CWy-Fw2Q9dXnDpsyDH2b_I2zTy8Ou65Pu96R0oxzel1dZ-9l4y1a6TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/jobs/32bf67e5-4971-47ce-985c-44b6b3860cdb",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"jobs",
+						"32bf67e5-4971-47ce-985c-44b6b3860cdb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"ahmadirfaan\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
