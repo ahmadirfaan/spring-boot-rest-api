@@ -1,6 +1,7 @@
 package com.irfaan.restapi.service;
 
 import com.irfaan.restapi.entities.Users;
+import com.irfaan.restapi.models.UserRequestDTO;
 
 /**
  * @author Ahmad Irfaan Hibatullah
@@ -9,5 +10,7 @@ import com.irfaan.restapi.entities.Users;
 public interface UserService {
 
     Users verifyUsername(String username);
+
+    Users addUser(UserRequestDTO userRequestDTO);
 
 }
